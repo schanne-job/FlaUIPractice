@@ -19,7 +19,7 @@ namespace FlaUiTests
         [TestMethod]
         public void TestBasicControls()
         {
-            var application = FlaUI.Core.Application.Launch(@"C:\Data\Visual Studio Workspace\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
+            var application = FlaUI.Core.Application.Launch(@"D:\dotNET\projects\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
             var automation = new UIA3Automation();
             var mainWindow = application.GetMainWindow(automation);
             ConditionFactory cf = new ConditionFactory(new UIA3PropertyLibrary());
@@ -46,7 +46,7 @@ namespace FlaUiTests
         [TestMethod]
         public void TestFindMEthods()
         {
-            var application = FlaUI.Core.Application.Launch(@"C:\Data\Visual Studio Workspace\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
+            var application = FlaUI.Core.Application.Launch(@"D:\dotNET\projects\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
             var automation = new UIA3Automation();
             var mainWindow = application.GetMainWindow(automation);
             ConditionFactory cf = new ConditionFactory(new UIA3PropertyLibrary());
@@ -65,7 +65,7 @@ namespace FlaUiTests
         [TestMethod]
         public void TestConditionFactoryWithMultipleConditions()
         {
-            var application = FlaUI.Core.Application.Launch(@"C:\Data\Visual Studio Workspace\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
+            var application = FlaUI.Core.Application.Launch(@"D:\dotNET\projects\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
             var automation = new UIA3Automation();
             var mainWindow = application.GetMainWindow(automation);
             ConditionFactory cf = new ConditionFactory(new UIA3PropertyLibrary());
@@ -82,14 +82,14 @@ namespace FlaUiTests
         [TestMethod]
         public void TestMenuControls()
         {
-            var application = FlaUI.Core.Application.Launch(@"C:\Data\Visual Studio Workspace\FlaUiPractice\FlaUIPractice\FlaUiTests\Resources\WinFormsApplication.exe");
+            var application = FlaUI.Core.Application.Launch(@"D:\dotNET\projects\FlaUiPractice\FlaUIPractice\FlaUiTests\Resources\WinFormsApplication.exe");
             var automation = new UIA3Automation();
             var mainWindow = application.GetMainWindow(automation);
             ConditionFactory cf = new ConditionFactory(new UIA3PropertyLibrary());
-            //var menu = mainWindow.FindFirstDescendant(cf.Menu()).AsMenu();
-            //menu.DrawHighlight();
+            var menu = mainWindow.FindFirstDescendant(cf.Menu()).AsMenu();
+            menu.DrawHighlight();
 
-            //menu.Items["File"].Invoke();
+            menu.Items["File"].Invoke();
             mainWindow.FindFirstDescendant(cf.ByName("ContextMenu")).AsButton().RightClick();
             var contextMenu = mainWindow.ContextMenu;
             contextMenu.DrawHighlight();
@@ -134,20 +134,20 @@ namespace FlaUiTests
         {
             //Full screen
             var fullscreenImg = Capture.Screen();
-            fullscreenImg.ToFile(@"C:\Data\Visual Studio Workspace\Screenshots\Full Screen.png");
+            fullscreenImg.ToFile(@"D:\dotNET\projects\Screenshots\Full Screen.png");
             
             //only one automation element
-            var application = FlaUI.Core.Application.Launch(@"C:\Data\Visual Studio Workspace\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
+            var application = FlaUI.Core.Application.Launch(@"D:\dotNET\projects\FlaUiPractice\FlaUIPractice\BankSystem\bin\Release\BankSystem.exe");
             var automation = new UIA3Automation();
             var mainWindow = application.GetMainWindow(automation);
             ConditionFactory cf = new ConditionFactory(new UIA3PropertyLibrary());
             var loginBtn = mainWindow.FindFirstDescendant(cf.ByName("Log In"));
             var loginImg = Capture.Element(loginBtn);
-            loginImg.ToFile(@"C:\Data\Visual Studio Workspace\Screenshots\Login Button.png");
+            loginImg.ToFile(@"D:\dotNET\projects\Screenshots\Login Button.png");
 
             //user defined rectangle area 
             var rectangleImg = Capture.Rectangle(new Rectangle(500, 500, 100, 150));
-            rectangleImg.ToFile(@"C:\Data\Visual Studio Workspace\Screenshots\Rectangle Img.png");
+            rectangleImg.ToFile(@"D:\dotNET\projectse\Screenshots\Rectangle Img.png");
         }
 
         [TestMethod]
